@@ -1,0 +1,28 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+###################### Poor practice 1 #####################################
+
+I've digged into the security group for the webapp, which is open to all traffic for all ports. 
+This is the worst vulnerbility for the attackers to exploit and easily access to our webapp. 
+We should remove it and put webapp in the private subnet. 
+
+Instead of exposing to port 80, we can establish a more secure port 443, or using the SSL termination 
+on application load balancer to improve security. 
+
+Instead of exposing to port 22 directly to allow ssh connection, we can deploy a bastion 
+instance in the public subnet to accomplish this. 
+
+Last but not least, we should restrict the traffic to webapp port 5000 from the 
+security group of load balancer only
+
+####################### Poor practice 2 ########################################
+
+I've digged into the IAM role to allow webapp instance to retrieve the S3 object in c3-app.yml file.
+It seems that it voilate the principle of least privileges. Instead of assigning permissions of 
+allowing all S3 actions on all S3 buckets to EC2 instance, we should restrict to the least
+privileges to specific buckets and to perform the neccesary jobs.
+
+######################### Poor practice 3 ###################################
+
+Instead of using internet gateway to access to S3 buecket, we should expose the S3 endpoint only 
+restricted to VPC.

@@ -1,0 +1,17 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+
+
+Application Load Balancer does not allow SSL termination.
+IAM policy violates principle of least privileges
+Webapp Security Groups open all ingress and egress traffic for all ports
+Webapp port 5000 is exposed to the internet 
+S3 buckets are not encryped and versioned
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+Enable SSL termination on ALB.
+Follow principle of least privileges rule on every policy before attached to the role
+Restrict traffic, port and source on every security groups
+Enable WAF for resources and NACLs on subnets for more secure
+Enable encryption and versioning to protect every S3 bucket object
+Enable Cloudwatch and CloudTrail

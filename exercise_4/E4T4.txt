@@ -1,0 +1,20 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+
+1. add the firewall in the front of instances
+2. add the NACLs to allow or deny specific traffic to access the subnets
+3. Disable the SSH connection from internet, we can enforce the security group rules or 
+deploy a bastion instance.
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+
+Yes. since everyhing is happened in the VPC and we do not need to use internet gateway and
+public IP addresses to communicate with resources in S3, which is more secure.
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+
+No. the existed data is still not encrypted. it is only applied for data uploaded after we enable the encryption.
+
+# What would happen if the original cloud formation templates are applied to this environment.
+
+Cloudformation will replace any changes what we made via Console or CLI.

@@ -1,0 +1,19 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+tool: Regula
+
+### Example vulnerability
+terraform code out of compliance
+
+##Scan AMI’s or containers for OS vulnerabilities
+tool: Anchore Scan
+
+### Example vulnerability
+openSSL issue and Container privilege escalations
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+tool: AWS SecurityHub
+
+### Example vulnerability
+Need to identify all security groups which allow 0.0.0.0/0 port 22
